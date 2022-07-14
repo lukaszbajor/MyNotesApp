@@ -1,0 +1,4 @@
+const Settings = (props) => {
+  return "Settings";
+};
+export default Settings;
