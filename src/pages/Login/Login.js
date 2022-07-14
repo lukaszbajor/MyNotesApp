@@ -1,15 +1,24 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/UI/Button/Button";
+import Form from "../../components/UI/Form/Form";
+import Input from "../../components/UI/Input/Input";
+import Label from "../../components/UI/Label/Label";
+import styles from "./Login.module.css";
 const Login = () => {
-  const login = () => {
-    console.log("Logowanie");
-  };
-  const register = () => {
-    console.log("Rejestrowanie");
-  };
+  const navigate = useNavigate();
   return (
     <>
-      <Button onClick={login} value="Login2" />
-      <Button onClick={register} value="Register2" />
+      <Form className={styles.loginForm}>
+        <Label htmlFor="pass">Podaj hasło: </Label>
+        <Input type="password" name="pass" />
+      </Form>
+      <Button
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        Wróć
+      </Button>
     </>
   );
 };
