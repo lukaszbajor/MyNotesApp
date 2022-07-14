@@ -37,6 +37,16 @@ const Login = () => {
           >
             Zaloguj
           </Button>
+          <p className={styles.infoLog}>
+            Nie masz konta?{" "}
+            <span
+              onClick={() => {
+                navigate("/register");
+              }}
+            >
+              Zarejestruj się!
+            </span>
+          </p>
         </Form>
         <Button
           onClick={() => {

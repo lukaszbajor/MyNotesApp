@@ -11,7 +11,7 @@ const Register = () => {
   const navigate = useNavigate();
   return (
     <>
-      <Title className={styles.title}>Formularz logowania</Title>
+      <Title className={styles.title}>Formularz rejestracji</Title>
       <Card>
         <Form className={styles.registerForm}>
           <FontAwesomeIcon icon={faRegistered} size="6x" />

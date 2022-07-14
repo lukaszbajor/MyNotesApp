@@ -17,3 +17,11 @@
 .inp {
   margin-top: 10px;
 }
+.infoLog {
+  margin-top: 10px;
+  text-align: center;
+}
+.infoLog span {
+  color: var(--green);
+  cursor: pointer;
+}
