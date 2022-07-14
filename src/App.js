@@ -1,20 +1,23 @@
 import React from "react";
 import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home/Home";
 import Header from "./components/Header/Header";
-import Button from "./components/UI/Button/Button";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
+// import Button from "./components/UI/Button/Button";
 
 function App() {
-  const login = () => {
-    console.log("Logowanie");
-  };
-  const register = () => {
-    console.log("Rejestrowanie");
-  };
   return (
     <div className="App">
       <Header />
-      <Button onClick={login} value="Login" />
-      <Button onClick={register} value="Register" />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
