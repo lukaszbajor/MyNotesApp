@@ -1,0 +1,26 @@
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+  margin-top: 50px;
+  padding: 20px;
+  background-color: #ddd;
+}
+.title {
+  margin-top: 40px;
+  text-align: center;
+}
+.backBtn {
+  margin-top: 20px;
+}
+.inp {
+  margin-top: 10px;
+}
+.boxBtns {
+  display: flex;
+  margin-top: 20px;
+}
+.inpBtn {
+  flex-basis: 50%;
+}
