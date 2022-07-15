@@ -20,4 +20,5 @@
 .btn {
   margin-top: 10px;
   align-self: stretch;
+  cursor: pointer;
 }

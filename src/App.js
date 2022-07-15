@@ -10,6 +10,7 @@ import Wrapper from "./components/UI/Wrapper/Wrapper";
 import Notes from "./pages/Notes/Notes";
 import Settings from "./pages/Settings/Settings";
 import Tasks from "./pages/Tasks/Tasks";
+import AddNote from "./components/AddNote/AddNote";
 // import Button from "./components/UI/Button/Button";
 
 const notes = [
@@ -43,6 +44,12 @@ const notes = [
     desc: "dwa jajka, mleko, cukier - wszytsko wymieszać",
     date: "15.07.2022",
   },
+  {
+    id: Math.random().toLocaleString(),
+    title: "Oprysk na owady",
+    desc: "Wlać do miski wodę, następnie wlać oprysk",
+    date: "15.07.2022",
+  },
 ];
 
 function App() {
@@ -57,6 +64,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/panel" element={<Panel />} />
             <Route path="/panel/notes" element={<Notes notes={[...notes]} />} />
+            <Route path="/panel/notes/add" element={<AddNote />} />
             <Route path="/panel/tasks" element={<Tasks />} />
             <Route path="/panel/settings" element={<Settings />} />
           </Routes>

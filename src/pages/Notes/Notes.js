@@ -17,13 +17,20 @@ const Notes = (props) => {
       >
         Wróć
       </Button>
+      <Button
+        onClick={() => {
+          navigate("/panel/notes/add");
+        }}
+      >
+        Dodaj notatkę
+      </Button>
       <Card className={styles.card}>
         {props.notes.map((note) => {
           return (
             <Note
               key={note.id}
               title={note.title}
-              desc={note.desc}
+              desc={note.desc.slice(0, 15) + "..."}
               date={note.date}
             />
           );
