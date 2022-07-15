@@ -6,13 +6,17 @@ const ViewNote = (props) => {
   console.log(props.notes);
   return (
     <>
-      <div>
-        {props.notes.map((el) => {
-          if (el.id == id) {
-            return <p key={el.id}>{el.title}</p>;
-          }
-        })}
-      </div>
+      {props.notes.map((el) => {
+        if (el.id == id) {
+          return (
+            <div key={el.id}>
+              <p>{el.title}</p>
+              <p>{el.desc}</p>
+              <p>{el.date}</p>
+            </div>
+          );
+        }
+      })}
     </>
   );
 };
