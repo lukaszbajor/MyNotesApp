@@ -1,14 +1,23 @@
 import { useNavigate } from "react-router-dom";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faNoteSticky,
+  faListCheck,
+  faGears,
+} from "@fortawesome/free-solid-svg-icons";
 import styles from "./Panel.module.css";
 import Title from "../../components/UI/Title/Title";
 import Button from "../../components/UI/Button/Button";
 import Card from "../../components/UI/Card/Card";
+import Option from "../../components/Option/Option";
+import Subtitle from "../../components/UI/Subtitle/Subtitle";
 const Panel = (props) => {
   const navigate = useNavigate();
   return (
     <>
-      <Title>Panel użytkownika</Title>
+      <Title className={styles.title}>Panel użytkownika</Title>
+
       <Button
         onClick={() => {
           navigate("/");
@@ -16,34 +25,43 @@ const Panel = (props) => {
       >
         Wyloguj
       </Button>
-      <Card>
-        <div className="notes">
+      <Card className={styles.panelBox}>
+        <Option>
+          <FontAwesomeIcon icon={faNoteSticky} size="4x" />
+          <Subtitle>Notatki</Subtitle>
           <Button
+            className={styles.btn}
             onClick={() => {
               navigate("/panel/notes");
             }}
           >
-            Notes
+            Przejdź
           </Button>
-        </div>
-        <div className="tasks">
+        </Option>
+        <Option>
+          <FontAwesomeIcon icon={faListCheck} size="4x" />
+          <Subtitle>Lista zadań</Subtitle>
           <Button
+            className={styles.btn}
             onClick={() => {
               navigate("/panel/tasks");
             }}
           >
-            Tasks
+            Przejdź
           </Button>
-        </div>
-        <div className="settings">
+        </Option>
+        <Option>
+          <FontAwesomeIcon icon={faGears} size="4x" />
+          <Subtitle>Ustawienia</Subtitle>
           <Button
+            className={styles.btn}
             onClick={() => {
               navigate("/panel/settings");
             }}
           >
-            Settings
+            Przejdź
           </Button>
-        </div>
+        </Option>
       </Card>
     </>
   );

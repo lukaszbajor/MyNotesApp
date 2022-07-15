@@ -1,0 +1,10 @@
+.option {
+  padding: 15px;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: var(--green);
+  align-items: center;
+}

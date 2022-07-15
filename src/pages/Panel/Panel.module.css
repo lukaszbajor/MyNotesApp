@@ -1,0 +1,13 @@
+.title {
+  text-align: center;
+}
+.panelBox {
+  margin-top: 150px;
+  padding: 10px;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.btn {
+  margin-top: 15px;
+  align-self: stretch;
+}
