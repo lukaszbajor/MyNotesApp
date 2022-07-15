@@ -28,7 +28,7 @@ const Panel = (props) => {
       <Card className={styles.panelBox}>
         <Option>
           <FontAwesomeIcon icon={faNoteSticky} size="4x" />
-          <Subtitle>Notatki</Subtitle>
+          <Subtitle className={styles.subtitle}>Notatki</Subtitle>
           <Button
             className={styles.btn}
             onClick={() => {
@@ -40,7 +40,7 @@ const Panel = (props) => {
         </Option>
         <Option>
           <FontAwesomeIcon icon={faListCheck} size="4x" />
-          <Subtitle>Lista zadań</Subtitle>
+          <Subtitle className={styles.subtitle}>Lista zadań</Subtitle>
           <Button
             className={styles.btn}
             onClick={() => {
@@ -52,7 +52,7 @@ const Panel = (props) => {
         </Option>
         <Option>
           <FontAwesomeIcon icon={faGears} size="4x" />
-          <Subtitle>Ustawienia</Subtitle>
+          <Subtitle className={styles.subtitle}>Ustawienia</Subtitle>
           <Button
             className={styles.btn}
             onClick={() => {

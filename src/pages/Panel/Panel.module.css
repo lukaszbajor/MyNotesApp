@@ -7,7 +7,13 @@
   flex-direction: row;
   justify-content: space-evenly;
 }
+.subtitle {
+  margin-top: 10px;
+}
 .btn {
   margin-top: 15px;
   align-self: stretch;
+}
+.btn:hover {
+  cursor: pointer;
 }
