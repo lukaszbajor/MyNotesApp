@@ -1,5 +1,5 @@
 .title {
-  text-align: center;
+  /* text-align: center; */
 }
 .panelBox {
   margin-top: 150px;
@@ -9,6 +9,7 @@
 }
 .subtitle {
   margin-top: 10px;
+  font-weight: 100;
 }
 .btn {
   margin-top: 15px;

@@ -17,7 +17,6 @@ const Panel = (props) => {
   return (
     <>
       <Title className={styles.title}>Panel użytkownika</Title>
-
       <Button
         onClick={() => {
           navigate("/");

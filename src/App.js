@@ -12,6 +12,39 @@ import Settings from "./pages/Settings/Settings";
 import Tasks from "./pages/Tasks/Tasks";
 // import Button from "./components/UI/Button/Button";
 
+const notes = [
+  {
+    id: Math.random().toLocaleString(),
+    title: "Przepis na placka",
+    desc: "dwa jajka, mleko, cukier - wszytsko wymieszać",
+    date: "15.07.2022",
+  },
+  {
+    id: Math.random().toLocaleString(),
+    title: "Przepis na placka",
+    desc: "dwa jajka, mleko, cukier - wszytsko wymieszać",
+    date: "15.07.2022",
+  },
+  {
+    id: Math.random().toLocaleString(),
+    title: "Przepis na placka",
+    desc: "dwa jajka, mleko, cukier - wszytsko wymieszać",
+    date: "15.07.2022",
+  },
+  {
+    id: Math.random().toLocaleString(),
+    title: "Przepis na placka",
+    desc: "dwa jajka, mleko, cukier - wszytsko wymieszać",
+    date: "15.07.2022",
+  },
+  {
+    id: Math.random().toLocaleString(),
+    title: "Przepis na placka",
+    desc: "dwa jajka, mleko, cukier - wszytsko wymieszać",
+    date: "15.07.2022",
+  },
+];
+
 function App() {
   return (
     <div className="App">
@@ -23,7 +56,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/panel" element={<Panel />} />
-            <Route path="/panel/notes" element={<Notes />} />
+            <Route path="/panel/notes" element={<Notes notes={[...notes]} />} />
             <Route path="/panel/tasks" element={<Tasks />} />
             <Route path="/panel/settings" element={<Settings />} />
           </Routes>
