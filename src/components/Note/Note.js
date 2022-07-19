@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom";
 
-const ViewNote = (props) => {
+const Note = (props) => {
   const { id } = useParams();
-  console.log(id);
-  console.log(props.notes);
+  // console.log(typeof(id));
+  // console.log(props.notes);
   return (
     <>
       {props.notes.map((el) => {
-        if (el.id == id) {
+        if (el.id === id) {
           return (
             <div key={el.id}>
               <p>{el.title}</p>
@@ -21,4 +21,4 @@ const ViewNote = (props) => {
   );
 };
 
-export default ViewNote;
+export default Note;

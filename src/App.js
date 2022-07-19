@@ -16,37 +16,37 @@ import ViewNote from "./components/Note/Note";
 
 const notes = [
   {
-    id: 1,
+    id: "1",
     title: "Przepis na placka",
     desc: "dwa jajka, mleko, cukier - wszytsko wymieszać",
     date: "15.07.2022",
   },
   {
-    id: 2,
+    id: "2",
     title: "Przepis na placka",
     desc: "dwa jajka, mleko, cukier - wszytsko wymieszać",
     date: "15.07.2022",
   },
   {
-    id: 3,
+    id: "3",
     title: "Przepis na placka",
     desc: "dwa jajka, mleko, cukier - wszytsko wymieszać",
     date: "15.07.2022",
   },
   {
-    id: 4,
+    id: "4",
     title: "Przepis na placka",
     desc: "dwa jajka, mleko, cukier - wszytsko wymieszać",
     date: "15.07.2022",
   },
   {
-    id: 5,
+    id: "5",
     title: "Przepis na placka",
     desc: "dwa jajka, mleko, cukier - wszytsko wymieszać",
     date: "15.07.2022",
   },
   {
-    id: 6,
+    id: "6",
     title: "Oprysk na owady",
     desc: "Wlać do miski wodę, następnie wlać oprysk",
     date: "15.07.2022",
