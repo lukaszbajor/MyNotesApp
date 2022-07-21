@@ -1,16 +1,15 @@
-const Input = (props) => {
+const Textarea = (props) => {
   return (
-    <input
-      type={props.type}
+    <textarea
       name={props.name}
       id={props.id}
+      cols={props.cols}
+      rows={props.rows}
       placeholder={props.placeholder}
       className={props.className}
-      value={props.value}
       onChange={props.onChange}
-      onClick={props.onClick}
-    />
+    ></textarea>
   );
 };
 
-export default Input;
+export default Textarea;
