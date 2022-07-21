@@ -9,10 +9,6 @@ const Backdrop = (props) => {
 };
 
 const ModalOverlay = (props) => {
-
-    const close = () => {
-        
-    }
   return (
     <Card className={styles.modal}>
       <header>
@@ -22,7 +18,7 @@ const ModalOverlay = (props) => {
         <p>{props.content}</p>
       </div>
       <footer>
-        <Button onClick={props.close}>Ok</Button>
+        <Button onClick={props.onConfirm}>Ok</Button>
       </footer>
     </Card>
   );

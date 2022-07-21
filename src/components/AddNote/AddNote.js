@@ -2,7 +2,7 @@ import { useState } from "react";
 import InfoModal from "../UI/InfoModal/InfoModal";
 
 const AddNote = (props) => {
-  const [info, setInfo] = useState(true);
+  const [info, setInfo] = useState(null);
   const closeModal = () => {
     setInfo(false);
   };
