@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
@@ -14,7 +14,7 @@ import AddNote from "./components/AddNote/AddNote";
 import ViewNote from "./components/Note/Note";
 // import Button from "./components/UI/Button/Button";
 
-const notes = [
+const notesArr = [
   {
     id: "1",
     title: "Przepis na placka",
@@ -54,6 +54,19 @@ const notes = [
 ];
 
 function App() {
+  const [notes, setNotes] = useState(notesArr);
+  const addNewNote = (title, date, content) => {
+    setNotes((prevState) => [
+      ...prevState,
+      {
+        id: (notes.length + 1).toString(),
+        title: title,
+        date: date,
+        desc: content,
+      },
+    ]);
+    console.log(notes);
+  };
   return (
     <div className="App">
       <Header />
@@ -64,8 +77,11 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/panel" element={<Panel />} />
-            <Route path="/panel/notes" element={<Notes notes={[...notes]} />} />
-            <Route path="/panel/notes/add" element={<AddNote />} />
+            <Route path="/panel/notes" element={<Notes notes={notes} />} />
+            <Route
+              path="/panel/notes/add"
+              element={<AddNote add={addNewNote} />}
+            />
             <Route
               path="/panel/notes/:id"
               element={<ViewNote notes={notes} />}

@@ -46,6 +46,8 @@ const AddNote = (props) => {
         subtitle: "Dodano notatkę!",
         content: "Notatka poprawnie dodana, trwa przekierowanie...",
       });
+
+      props.add(title, date, content);
       setTimeout(() => {
         navigate("/panel/notes");
       }, 5000);
