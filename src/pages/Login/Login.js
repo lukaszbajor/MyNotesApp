@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import Wrapper from "../../components/UI/Wrapper/Wrapper";
 import Button from "../../components/UI/Button/Button";
 import Form from "../../components/UI/Form/Form";
@@ -11,6 +12,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 const Login = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+
+  const login = () => {
+    navigate("/panel");
+  };
   return (
     <>
       <Title className={styles.title}>Formularz logowania</Title>
@@ -22,19 +29,20 @@ const Login = () => {
             name="email"
             placeholder="Email"
             className={styles.inp}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
           />
           <Input
             type="password"
             name="pass"
             placeholder="Password"
             className={styles.inp}
-          />
-          <Button
-            onClick={() => {
-              navigate("/panel");
+            onChange={(e) => {
+              setPass(e.target.value);
             }}
-            className={styles.backBtn}
-          >
+          />
+          <Button onClick={login} className={styles.backBtn}>
             Zaloguj
           </Button>
           <p className={styles.infoLog}>
