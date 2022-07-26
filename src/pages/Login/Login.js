@@ -10,12 +10,13 @@ import Card from "../../components/UI/Card/Card";
 import Title from "../../components/UI/Title/Title";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
-const Login = () => {
+const Login = (props) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
-  const login = () => {
+  const loginUser = () => {
+    props.login();
     navigate("/panel");
   };
   return (
@@ -42,7 +43,7 @@ const Login = () => {
               setPass(e.target.value);
             }}
           />
-          <Button onClick={login} className={styles.backBtn}>
+          <Button onClick={loginUser} className={styles.backBtn}>
             Zaloguj
           </Button>
           <p className={styles.infoLog}>

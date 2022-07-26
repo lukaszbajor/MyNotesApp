@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 // import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,10 +15,12 @@ import Card from "../../components/UI/Card/Card";
 import Option from "../../components/Option/Option";
 import Subtitle from "../../components/UI/Subtitle/Subtitle";
 const Panel = (props) => {
+  const { user } = useContext(AuthContext);
+
   const navigate = useNavigate();
   return (
     <>
-      <Title className={styles.title}>Panel użytkownika</Title>
+      <Title className={styles.title}>Panel użytkownika {user.email}</Title>
       <Button
         onClick={() => {
           navigate("/");

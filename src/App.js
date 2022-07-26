@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Header from "./components/Header/Header";
@@ -14,6 +17,7 @@ import Tasks from "./pages/Tasks/Tasks";
 import AddNote from "./components/AddNote/AddNote";
 import ViewNote from "./components/Note/Note";
 import { auth } from "./firebase-config";
+import { AuthContext } from "./context/AuthContext";
 // import Button from "./components/UI/Button/Button";
 
 const notesArr = [
@@ -56,7 +60,9 @@ const notesArr = [
 ];
 
 function App() {
+  const [user, setUser] = useState({});
   const [notes, setNotes] = useState(notesArr);
+
   const addNewNote = (title, date, content) => {
     setNotes((prevState) => [
       ...prevState,
@@ -69,6 +75,10 @@ function App() {
     ]);
     console.log(notes);
   };
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
 
   const register = async (name, email, pass, pass2) => {
     console.log(email, pass);
@@ -87,31 +97,34 @@ function App() {
 
     // console.log(name, email, pass, pass2);
   };
+  const login = () => {};
   return (
     <div className="App">
       <Header />
       <Router>
         <Wrapper>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route
-              path="/register"
-              element={<Register register={register} />}
-            />
-            <Route path="/panel" element={<Panel />} />
-            <Route path="/panel/notes" element={<Notes notes={notes} />} />
-            <Route
-              path="/panel/notes/add"
-              element={<AddNote add={addNewNote} />}
-            />
-            <Route
-              path="/panel/notes/:id"
-              element={<ViewNote notes={notes} />}
-            />
-            <Route path="/panel/tasks" element={<Tasks />} />
-            <Route path="/panel/settings" element={<Settings />} />
-          </Routes>
+          <AuthContext.Provider value={{ user }}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login login={login} />} />
+              <Route
+                path="/register"
+                element={<Register register={register} />}
+              />
+              <Route path="/panel" element={<Panel />} />
+              <Route path="/panel/notes" element={<Notes notes={notes} />} />
+              <Route
+                path="/panel/notes/add"
+                element={<AddNote add={addNewNote} />}
+              />
+              <Route
+                path="/panel/notes/:id"
+                element={<ViewNote notes={notes} />}
+              />
+              <Route path="/panel/tasks" element={<Tasks />} />
+              <Route path="/panel/settings" element={<Settings />} />
+            </Routes>
+          </AuthContext.Provider>
         </Wrapper>
       </Router>
     </div>
