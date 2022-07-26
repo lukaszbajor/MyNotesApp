@@ -11,13 +11,13 @@ import Title from "../../components/UI/Title/Title";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import InfoModal from "../../components/UI/InfoModal/InfoModal";
-import { AuthContext } from "../../context/AuthContext";
+// import { AuthContext } from "../../context/AuthContext";
 const Login = (props) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [info, setInfo] = useState(null);
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
 
   const closeModal = () => {
     setInfo(null);
@@ -46,7 +46,7 @@ const Login = (props) => {
 
       setTimeout(() => {
         navigate("/panel");
-      }, 5000);
+      }, 3000);
     }
   };
   return (

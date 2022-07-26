@@ -47,10 +47,10 @@ const AddNote = (props) => {
         content: "Notatka poprawnie dodana, trwa przekierowanie...",
       });
 
-      props.add(title, date, content);
       setTimeout(() => {
+        props.add(title, date, content);
         navigate("/panel/notes");
-      }, 5000);
+      }, 3000);
     }
   };
 

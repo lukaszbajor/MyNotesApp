@@ -57,7 +57,7 @@ const Register = (props) => {
       props.register(name, email, pass, pass2);
       setTimeout(() => {
         navigate("/login");
-      }, 5000);
+      }, 3000);
     }
     // navigate("/login");
   };

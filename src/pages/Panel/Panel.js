@@ -28,7 +28,7 @@ const Panel = (props) => {
     setTimeout(() => {
       props.logout();
       navigate("/login");
-    }, 5000);
+    }, 3000);
   };
 
   const navigate = useNavigate();
@@ -36,7 +36,15 @@ const Panel = (props) => {
     <>
       {user ? (
         <>
-          {info && <InfoModal title={info.title} content={info.content} />}
+          {info && (
+            <InfoModal
+              title={info.title}
+              content={info.content}
+              onConfirm={() => {
+                setInfo(null);
+              }}
+            />
+          )}
           <Title className={styles.title}>
             Panel użytkownika {user?.email}
           </Title>
