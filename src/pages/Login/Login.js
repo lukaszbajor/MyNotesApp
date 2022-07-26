@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Wrapper from "../../components/UI/Wrapper/Wrapper";
 import Button from "../../components/UI/Button/Button";
 import Form from "../../components/UI/Form/Form";
@@ -10,20 +10,57 @@ import Card from "../../components/UI/Card/Card";
 import Title from "../../components/UI/Title/Title";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import InfoModal from "../../components/UI/InfoModal/InfoModal";
+import { AuthContext } from "../../context/AuthContext";
 const Login = (props) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [info, setInfo] = useState(null);
+  const { user } = useContext(AuthContext);
 
-  const loginUser = () => {
-    props.login();
-    navigate("/panel");
+  const closeModal = () => {
+    setInfo(null);
+  };
+
+  const loginUser = (e) => {
+    e.preventDefault();
+    if (email.trim().length === 0) {
+      setInfo({
+        subtitle: "Pole tytuł nie może być puste!",
+        content: "Wpisz jak nazwałeś swoją notatkę.",
+      });
+      return;
+    } else if (pass.trim().length === 0) {
+      setInfo({
+        subtitle: "Pole treść nie może być puste!",
+        content: "Wpisz jaką treść chciałeś/aś sobie zapisać",
+      });
+      return;
+    } else {
+      setInfo({
+        subtitle: "Logowanie",
+        content: "Trwa logowanie...",
+      });
+      props.login(email, pass);
+
+      setTimeout(() => {
+        navigate("/panel");
+      }, 5000);
+    }
   };
   return (
     <>
+      {info && (
+        <InfoModal
+          subtitle={info.subtitle}
+          content={info.content}
+          onConfirm={closeModal}
+        />
+      )}
       <Title className={styles.title}>Formularz logowania</Title>
       <Card>
-        <Form className={styles.loginForm}>
+        <Form className={styles.loginForm} onSubmit={loginUser}>
           <FontAwesomeIcon icon={faUserCircle} size="6x" />
           <Input
             type="email"
@@ -43,9 +80,7 @@ const Login = (props) => {
               setPass(e.target.value);
             }}
           />
-          <Button onClick={loginUser} className={styles.backBtn}>
-            Zaloguj
-          </Button>
+          <Input type="submit" value="Zaloguj" className={styles.backBtn} />
           <p className={styles.infoLog}>
             Nie masz konta?{" "}
             <span

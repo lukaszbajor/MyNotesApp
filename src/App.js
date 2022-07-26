@@ -3,6 +3,8 @@ import "./App.css";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
@@ -82,6 +84,7 @@ function App() {
 
   const register = async (name, email, pass, pass2) => {
     console.log(email, pass);
+
     try {
       const user = await createUserWithEmailAndPassword(
         auth,
@@ -93,11 +96,27 @@ function App() {
       console.log(user);
     } catch (error) {
       console.log(error.message);
+      return;
     }
 
     // console.log(name, email, pass, pass2);
   };
-  const login = () => {};
+  const login = async (email, pass) => {
+    try {
+      const user = await signInWithEmailAndPassword(auth, email, pass);
+      console.log(user);
+      if (user) {
+        console.log("uzytkownik istnieje");
+      }
+    } catch (error) {
+      console.log(error.message);
+      return;
+    }
+  };
+
+  const logout = async () => {
+    await signOut(auth);
+  };
   return (
     <div className="App">
       <Header />
@@ -111,7 +130,7 @@ function App() {
                 path="/register"
                 element={<Register register={register} />}
               />
-              <Route path="/panel" element={<Panel />} />
+              <Route path="/panel" element={<Panel logout={logout} />} />
               <Route path="/panel/notes" element={<Notes notes={notes} />} />
               <Route
                 path="/panel/notes/add"

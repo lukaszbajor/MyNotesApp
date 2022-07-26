@@ -14,58 +14,73 @@ import Button from "../../components/UI/Button/Button";
 import Card from "../../components/UI/Card/Card";
 import Option from "../../components/Option/Option";
 import Subtitle from "../../components/UI/Subtitle/Subtitle";
+import Login from "../Login/Login";
+import InfoModal from "../../components/UI/InfoModal/InfoModal";
 const Panel = (props) => {
   const { user } = useContext(AuthContext);
 
   const navigate = useNavigate();
   return (
     <>
-      <Title className={styles.title}>Panel użytkownika {user.email}</Title>
-      <Button
-        onClick={() => {
-          navigate("/");
-        }}
-      >
-        Wyloguj
-      </Button>
-      <Card className={styles.panelBox}>
-        <Option>
-          <FontAwesomeIcon icon={faNoteSticky} size="4x" />
-          <Subtitle className={styles.subtitle}>Notatki</Subtitle>
+      {user ? (
+        <>
+          <Title className={styles.title}>
+            Panel użytkownika {user?.email}
+          </Title>
           <Button
-            className={styles.btn}
             onClick={() => {
-              navigate("/panel/notes");
+              props.logout();
+              navigate("/");
             }}
           >
-            Przejdź
+            Wyloguj
           </Button>
-        </Option>
-        <Option>
-          <FontAwesomeIcon icon={faListCheck} size="4x" />
-          <Subtitle className={styles.subtitle}>Lista zadań</Subtitle>
-          <Button
-            className={styles.btn}
-            onClick={() => {
-              navigate("/panel/tasks");
-            }}
-          >
-            Przejdź
-          </Button>
-        </Option>
-        <Option>
-          <FontAwesomeIcon icon={faGears} size="4x" />
-          <Subtitle className={styles.subtitle}>Ustawienia</Subtitle>
-          <Button
-            className={styles.btn}
-            onClick={() => {
-              navigate("/panel/settings");
-            }}
-          >
-            Przejdź
-          </Button>
-        </Option>
-      </Card>
+          <Card className={styles.panelBox}>
+            <Option>
+              <FontAwesomeIcon icon={faNoteSticky} size="4x" />
+              <Subtitle className={styles.subtitle}>Notatki</Subtitle>
+              <Button
+                className={styles.btn}
+                onClick={() => {
+                  navigate("/panel/notes");
+                }}
+              >
+                Przejdź
+              </Button>
+            </Option>
+            <Option>
+              <FontAwesomeIcon icon={faListCheck} size="4x" />
+              <Subtitle className={styles.subtitle}>Lista zadań</Subtitle>
+              <Button
+                className={styles.btn}
+                onClick={() => {
+                  navigate("/panel/tasks");
+                }}
+              >
+                Przejdź
+              </Button>
+            </Option>
+            <Option>
+              <FontAwesomeIcon icon={faGears} size="4x" />
+              <Subtitle className={styles.subtitle}>Ustawienia</Subtitle>
+              <Button
+                className={styles.btn}
+                onClick={() => {
+                  navigate("/panel/settings");
+                }}
+              >
+                Przejdź
+              </Button>
+            </Option>
+          </Card>
+        </>
+      ) : (
+        <InfoModal
+          title="Błąd"
+          content="Błędne dane"
+          onConfirm={() => navigate("/login")}
+        />
+      )}
     </>
   );
 };
