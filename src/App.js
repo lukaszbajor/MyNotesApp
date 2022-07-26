@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Header from "./components/Header/Header";
@@ -12,6 +13,7 @@ import Settings from "./pages/Settings/Settings";
 import Tasks from "./pages/Tasks/Tasks";
 import AddNote from "./components/AddNote/AddNote";
 import ViewNote from "./components/Note/Note";
+import { auth } from "./firebase-config";
 // import Button from "./components/UI/Button/Button";
 
 const notesArr = [
@@ -67,6 +69,24 @@ function App() {
     ]);
     console.log(notes);
   };
+
+  const register = async (name, email, pass, pass2) => {
+    console.log(email, pass);
+    try {
+      const user = await createUserWithEmailAndPassword(
+        auth,
+        // name,
+        email,
+        pass
+        // pass2
+      );
+      console.log(user);
+    } catch (error) {
+      console.log(error.message);
+    }
+
+    // console.log(name, email, pass, pass2);
+  };
   return (
     <div className="App">
       <Header />
@@ -75,7 +95,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route
+              path="/register"
+              element={<Register register={register} />}
+            />
             <Route path="/panel" element={<Panel />} />
             <Route path="/panel/notes" element={<Notes notes={notes} />} />
             <Route

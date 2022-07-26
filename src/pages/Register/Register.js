@@ -100,6 +100,7 @@ const Register = (props) => {
             className={styles.inp}
             onChange={(e) => {
               setPass(e.target.value);
+              console.log(pass);
             }}
           />
           <Input
