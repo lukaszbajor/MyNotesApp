@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 // import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -18,23 +18,29 @@ import Login from "../Login/Login";
 import InfoModal from "../../components/UI/InfoModal/InfoModal";
 const Panel = (props) => {
   const { user } = useContext(AuthContext);
+  const [info, setInfo] = useState(null);
+
+  const logoutUser = () => {
+    setInfo({
+      title: "Wylogowanie",
+      content: "Trwa wylogowanie...",
+    });
+    setTimeout(() => {
+      props.logout();
+      navigate("/login");
+    }, 5000);
+  };
 
   const navigate = useNavigate();
   return (
     <>
       {user ? (
         <>
+          {info && <InfoModal title={info.title} content={info.content} />}
           <Title className={styles.title}>
             Panel użytkownika {user?.email}
           </Title>
-          <Button
-            onClick={() => {
-              props.logout();
-              navigate("/");
-            }}
-          >
-            Wyloguj
-          </Button>
+          <Button onClick={logoutUser}>Wyloguj</Button>
           <Card className={styles.panelBox}>
             <Option>
               <FontAwesomeIcon icon={faNoteSticky} size="4x" />
